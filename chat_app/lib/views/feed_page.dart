@@ -1,5 +1,7 @@
 import 'package:chat_app/services/auth_service.dart';
 import 'package:chat_app/services/firestore_service.dart';
+import 'package:chat_app/views/home_page.dart';
+import 'package:chat_app/views/login_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +24,53 @@ class _FeedPageState extends State<FeedPage> {
       appBar: AppBar(
         title: Text('Feedbacks'),
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.home),
+          onPressed: () async {
+                try {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text(
+                        e.toString(),
+                      ),
+                    ),
+                  );
+                }
+          },
+        ),
+        actions: [
+          IconButton(
+            onPressed: () async {
+                try {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => LoginPage(),
+                    ),
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text(
+                        e.toString(),
+                      ),
+                    ),
+                  );
+                }
+          },
+            icon: Icon(Icons.logout)
+          )
+        ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('Feedbacks').snapshots(),
+        stream: FirebaseFirestore.instance.collection('Feedbacks').orderBy('created_at', descending: true).snapshots(),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -91,18 +137,3 @@ class _FeedPageState extends State<FeedPage> {
     );
   }
 }
-
-
-// ListView.separated(
-//         separatorBuilder: (context, index) => Divider(),
-//         itemCount: 20,
-//         itemBuilder: (context, index) {
-//           return ListTile(
-//             leading: CircleAvatar(),
-//             title: Text('Nome'),
-//             subtitle: Text(
-//                 'Comentariooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'),
-//             trailing: Text('02/10/24'),
-//           );
-//         },
-//       ),

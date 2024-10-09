@@ -1,5 +1,6 @@
 import 'package:chat_app/services/auth_service.dart';
 import 'package:chat_app/views/feed_page.dart';
+import 'package:chat_app/views/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -48,6 +49,29 @@ class HomePage extends StatelessWidget {
                 }
           },
         ),
+        actions: [
+          IconButton(
+            onPressed: () async {
+                try {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => LoginPage(),
+                    ),
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text(
+                        e.toString(),
+                      ),
+                    ),
+                  );
+                }
+          },
+            icon: Icon(Icons.logout)
+          )
+        ],
       )
     );
   }
