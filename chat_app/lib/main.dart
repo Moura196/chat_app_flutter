@@ -9,7 +9,8 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     MaterialApp(
-      home: LoginPage(),
+      home: FeedPage(),
+      //LoginPage(),
       theme: ThemeData(
         useMaterial3: false
       ),
