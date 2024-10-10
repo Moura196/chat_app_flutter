@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
             const Icon(
               Icons.message_outlined,
               size: 120,
-              color: Colors.green,
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             CustomInput(
               controller: emailController,

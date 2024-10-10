@@ -22,6 +22,7 @@ class _FeedPageState extends State<FeedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(9, 238, 163, 232),
         title: Text('Feedbacks'),
         centerTitle: true,
         leading: IconButton(

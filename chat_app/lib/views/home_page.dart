@@ -28,6 +28,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(9, 238, 163, 232),
         leading: IconButton(
           icon: Icon(Icons.feedback),
           onPressed: () async {

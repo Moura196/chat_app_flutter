@@ -12,7 +12,8 @@ void main() async {
       home: LoginPage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        useMaterial3: false
+        useMaterial3: false,
+        scaffoldBackgroundColor: Colors.green[300],
       ),
     ),
   );

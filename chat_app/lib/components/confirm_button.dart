@@ -4,7 +4,7 @@ class ConfirmButton extends StatelessWidget {
 
   String labelText;
   Function? onPressed;
-  ConfirmButton({super.key, required this.labelText, this.onPressed});
+  ConfirmButton({super.key, required this.labelText, this.onPressed, Color? color});
 
   @override
   Widget build(BuildContext context) {
